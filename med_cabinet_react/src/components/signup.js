@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { useRouteMatch } from "react-router-dom";
 
 
 function SignUp ({props}){
+let match = useRouteMatch('/signup')
 const {
     handleChange,
     handleSubmit
@@ -60,7 +62,10 @@ const {
                     name='password'
                     onChange={handleChange}/>
                 <br/>
-                <button className='submit' onClick={handleSubmit}>Create Account</button>
+                <br/>
+                <button className='submit'>Submit</button>
+                <br/>
+                <Link to='/signup/userinfo'><button className='submit'>Create Account</button></Link>
             </form>
         </div>
     )

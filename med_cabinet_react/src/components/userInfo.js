@@ -1,6 +1,8 @@
 import React from 'react'
+import { useRouteMatch } from 'react-router-dom'
 
 function UserInfo({props}){
+    let match = useRouteMatch('/signup/userinfo')
     const {
         handleChange,
         handleSubmit
@@ -41,3 +43,4 @@ function UserInfo({props}){
         </form>
     )
 }
+export default UserInfo
