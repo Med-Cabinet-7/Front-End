@@ -3,9 +3,8 @@ import axios from "axios";
 export const axiosWithAuth = () => {
   const token = localStorage.getItem("token");
   return axios.create({
-    baseURL: 
+    baseURL:"https://med-cabinet-7.herokuapp.com/api/",
     headers: {
-      // "content-type": "application-json",
       Authorization: token
     }
   });

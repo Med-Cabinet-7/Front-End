@@ -1,42 +1,50 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import {useRouteMatch} from "react-router-dom"
+import {useRouteMatch} from "react-router-dom";
+import Form from "../styles/forms";
+import FormWrapper from "../styles/formwrapper"
+import Header from '../styles/headers'
 
 
+const initialState = {
+  username: "",
+  password: "",
+  isFetching: false
+};
 
-const Login = ({props}) => {
-let match = useRouteMatch('/')
+const Login = props => {
+  const focusHandler = event =>{
+        
+    event.target.style.boxShadow = '5px 5px 5px grey'
+  }
+  const focusOutHandler = event =>{
+    event.target.style.boxShadow = 'none'
+  }
+  
+  const [loginData, setLoginData] = useState(initialState);
 
-const {
-    handleChange,
-    handleSubmit
-} = props
+  const handleChange = e => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
 
-// const [login, setLogin] = useState(initialState);
+  const handleSubmit = e => {
+    e.preventDefault();
+    setLoginData({ ...loginData, isFetching: true});
+    axiosWithAuth()
+    .post("/auth/login", { username: loginData.username, password: loginData.password })
+    .then(res => {
+      console.log(res)
+      localStorage.setItem("token", res.data.payload)
+      props.history.push("/userDashboard")
+    })
+    .catch(err =>{ console.log("Oof...sorry, an error occured")})
+    }
 
-//   const handleChange = e => {
-//     // name points to "name" in your form
-//     setLogin({ ...login, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = event => {
-//     event.preventDefault();
-//     setLogin({ ...login, isFetching: true });
-//     axiosWithAuth()
-//       .post("/auth/login", login)
-//       .then(res => {
-//         localStorage.setItem("token", res.data.message);
-//         props.history.push("/...");
-//         // LINK TO WHERE DATA GOES
-//       })
-//       .catch(err => {
-//         console.log(err, "sorry, an error has occured while loggin you in");
-//       });
-//   };
-
-  return (
+ return (
     <div>
+      <Header>
+      <div className='header-wrapper'>
       <h1>Open Your Medicine Cabinet</h1>
       <img
         className="logo"
@@ -44,17 +52,21 @@ const {
         // ADD THE LOGO HERE
         alt="logo image"
       />
+      </div>  
       <h3>Login</h3>
-      <div>
-        <form onSubmit={handleSubmit}>
+      </Header>
+      <FormWrapper>
+        <Form onSubmit={handleSubmit}>
           <input
             className='login'
             label="Username"
             type="text"
             name="username"
             placeholder="username"
-            value={login.username}
+            value={loginData.username}
             onChange={handleChange}
+            onFocus={focusHandler}
+                onBlur={focusOutHandler}
           />
           <br />
           <input
@@ -63,16 +75,19 @@ const {
             type="password"
             name="password"
             placeholder="password"
-            value={login.password}
+            value={loginData.password}
             onChange={handleChange}
+            onFocus={focusHandler}
+                onBlur={focusOutHandler}
           />
           <br />
           <br />
           <button>Log In</button>
-          {login.isFetching && "Please wait...logging you in"}
-        </form>
+          {loginData.isFetching && "Please wait...logging you in"}
+        </Form>
         Don't have an account? <Link to="/signup">Sign Up</Link>
-      </div>
+      </FormWrapper>
+
     </div>
   );
 };
