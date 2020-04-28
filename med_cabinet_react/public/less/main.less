@@ -17,15 +17,91 @@ body {
             // margin-left: auto;
             // margin-right: auto;
             // width: 50%;
-            width: 98%; /* width of container */
-            border: 1px solid black;
+            width: 100%;
+            // border: 1px solid black;
             
         }
 
+        .insideimage {
+            position: absolute;
+            top: 45%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: 4px solid white;
+            border-radius: 50%;
+            line-height: 200px;
+            padding: 2%;
+            
+            .centered {
+                color: #008B8B;
+            }
+
+            &:hover {
+                &:hover {
+                    // opacity: .5;
+                    opacity: 1;
+                    -webkit-animation: flash 1.5s;
+                    animation: flash 1.5s;
+                }
+
+                @-webkit-keyframes flash {
+                    0% {
+                        opacity: .4;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+                @keyframes flash {
+                    0% {
+                        opacity: .4;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .overlap {
+            display:flex;
+            justify-content: center;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            img {
+                width: 40%;
+                margin: 10%;
+                border: 4px solid white;
+                -webkit-transform: scale(1);
+	            transform: scale(1);
+	            -webkit-transition: .3s ease-in-out;
+	            transition: .3s ease-in-out;
+
+                &:hover {
+                    -webkit-transform: scale(1.3);
+	                transform: scale(1.3);
+                }
+            }
+        }
+
         .belowimage {
-            width: 90%;
+            padding-top: 15%;
+            width: 100%;
             display: flex;
-            justify-content:center;
+            align-items:center;
+
+            .info {
+                padding: 2%;
+                background-color: #008B8B;
+                color: white;
+                text-align: center;
+            }
         }
     }
     .section-container {
@@ -37,7 +113,10 @@ body {
             align-items: center;
 
             img {
-                width: 98%;
+                width: 100%;
+                margin-top: 2%;
+                padding-top: 1%;
+                border-top: 4px solid #008B8B;
             }
 
             .info {
@@ -50,21 +129,76 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            width: 100%;
 
             .image-table {
+                width: 100%;
                 display: flex;
-                justify-content: space-around;
+                justify-content: space-evenly;
                 align-items:center;
+                background: white;
 
                 img {
-                    border: 1px solid black;
-                    width: 30%;
-                    margin: 1%;
+                    background-color: #1abc9c;
+                    border: 4px solid #008B8B;
+                    width: 25%;
+                    margin: 2% 0;
+                    // opacity: 1;
+                    // -webkit-transition: .3s ease-in-out;
+                    // transition: .3s ease-in-out;
+
+                    &:hover {
+                        // opacity: .5;
+                        opacity: 1;
+	                    -webkit-animation: flash 1.5s;
+	                    animation: flash 1.5s;
+                    }
+
+                    @-webkit-keyframes flash {
+                        0% {
+                            opacity: .4;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                    }
+                    @keyframes flash {
+                        0% {
+                            opacity: .4;
+                        }
+                        100% {
+                            opacity: 1;
+                        }
+                    }
                 }
             }
+        }
 
-            
+        .abovefooter {
+            background-color: #008B8B;
+            padding: 5%;
+            color: white;
+
+            p {
+                color: white;
+            }
         }
     }
     
+    footer {
+        background-color: grey;
+        display:flex;
+        flex-direction: column;
+        color: white;
+
+        .bottomnav {
+            background-color: grey;
+        }
+
+        .disclaimer {
+            background-color: grey;
+        }
+
+    }
+
 }
