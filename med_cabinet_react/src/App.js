@@ -6,6 +6,7 @@ import Login from './components/login';
 import UserInfo from './components/userDashboard';
 import WeedCard from './components/recCard'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import PrivateRoute from "./components/PrivateRoute";
 
 const url = 'http://localhost:3000/'
 
@@ -15,9 +16,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path='/dashboard'>
+          <PrivateRoute exact path='/dashboard'>
             <UserInfo />
-          </Route>
+          </PrivateRoute>
           <Route path='/signup'>
             <SignUp />
           </Route>
