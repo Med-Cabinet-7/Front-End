@@ -8,16 +8,6 @@ import Header from '../styles/headers'
 import * as yup from 'yup'
 
 const SignUp = props => {
-  const [signUpInfo, setSignUpInfo] = useState({
-    email: "",
-    username: "",
-    password: "",
-  });
-  const initialErrors = {
-    username: "",
-    password: "",
-    email: ""
-  }
   const signupSchema = 
     yup.object().shape({
       username: yup.string()
@@ -30,19 +20,35 @@ const SignUp = props => {
       .email('Your email must be valid')
       .required('You must provide an email')
     })
+
+  const [signUpInfo, setSignUpInfo] = useState({
+    email: "",
+    username: "",
+    password: "",
+  });
+  const initialErrors = {
+    username: "",
+    password: "",
+    email: ""
+  }
+  
   const [errors, setErrors] = useState(initialErrors)
 
   const handleChange = event => {
-    setSignUpInfo({ ...signUpInfo, [event.target.name]: event.target.value });
+    const name=event.target.name
+    const value = event.target.value
+   
 
-    // yup.reach(signupSchema, name)
-    // .validate(value)
-    // .then(valid=>{
-    //     setErrors({...errors, [name]:''})
-    //   })
-    // .catch(err=>{
-    //     setErrors({...errors, [name]: err.errors[0]})
-    //   })
+    yup.reach(signupSchema, name)
+    .validate(value)
+    .then(valid=>{
+        setErrors({...errors, [name]:''})
+      })
+    .catch(err=>{
+        setErrors({...errors, [name]: err.errors[0]})
+      })
+
+      setSignUpInfo({ ...signUpInfo, [name]: value });
   };
 
   const handleSubmit = event => {
@@ -97,6 +103,7 @@ const SignUp = props => {
             onFocus={focusHandler}
             onBlur={focusOutHandler}
             onChange={handleChange}
+            value={signUpInfo.username}
           />
           <p>{errors.email}</p>
           <input
@@ -108,6 +115,7 @@ const SignUp = props => {
             onFocus={focusHandler}
             onBlur={focusOutHandler}
             onChange={handleChange}
+            value={signUpInfo.email}
           />
           <p>{errors.password}</p>
           <input
@@ -119,6 +127,7 @@ const SignUp = props => {
             onFocus={focusHandler}
             onBlur={focusOutHandler}
             onChange={handleChange}
+            value={signUpInfo.password}
           />
           <br />
           <button className='submit' onClick={handleSubmit}>Create Account</button>
