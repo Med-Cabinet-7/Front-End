@@ -62,23 +62,6 @@ function UserInfo({ props }) {
 
             <button onClick={onHighTypeSubmit}>Get Strains</button>
 
-            {/* <Form>
-            <label>What kind of high are you looking for?</label>
-            <div>
-        <form onSubmit={handleSubmit}>
-          <input
-          lable="highType"
-            type="text"
-            name="text field"
-            placeholder="What type of high are you looking for?"
-            // value={.}
-            // onChange={handleChange}
-          />
-          <input
-      
-
-        </Form> */}
-
             <h3>Here are your reccomendations!</h3>
             {/* <WeedCards strains={strains} /> */}
             <ul>

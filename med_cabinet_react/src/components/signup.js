@@ -5,21 +5,44 @@ import { useRouteMatch } from "react-router-dom";
 import Form from '../styles/forms'
 import FormWrapper from '../styles/formwrapper'
 import Header from '../styles/headers'
+import * as yup from 'yup'
 
 const SignUp = props => {
   const [signUpInfo, setSignUpInfo] = useState({
-    firstname: "",
-    lastname: "",
     email: "",
     username: "",
     password: "",
-    age: "",
-    weight: "",
-    height: ""
   });
+  const initialErrors = {
+    username: "",
+    password: "",
+    email: ""
+  }
+  const signupSchema = 
+    yup.object().shape({
+      username: yup.string()
+        .min(4, 'Your username must be more than 3 characters')
+        .required('A username is required'),
+      password: yup.string()
+        .min(8, 'Your password must be at least 8 characters')
+        .required('You must create a password'),
+      email: yup.string()
+      .email('Your email must be valid')
+      .required('You must provide an email')
+    })
+  const [errors, setErrors] = useState(initialErrors)
 
   const handleChange = event => {
     setSignUpInfo({ ...signUpInfo, [event.target.name]: event.target.value });
+
+    // yup.reach(signupSchema, name)
+    // .validate(value)
+    // .then(valid=>{
+    //     setErrors({...errors, [name]:''})
+    //   })
+    // .catch(err=>{
+    //     setErrors({...errors, [name]: err.errors[0]})
+    //   })
   };
 
   const handleSubmit = event => {
@@ -33,7 +56,7 @@ const SignUp = props => {
         // That's riding on the idea though that the sign up API route returns the token in its payload.
         // localStorage.setItem("token", res.data.payload)
         // props.history.push("/userDashboard")
-        props.history.push("/login")
+        props.history.push("/dashboard")
       })
       .catch(err =>
         console.log(err, "sorry, an error has occured while signing you up")
@@ -64,6 +87,7 @@ const SignUp = props => {
       </Header>
       <FormWrapper className='signup-wrapper'>
         <Form className='signup-form'>
+          <p>{errors.username}</p>
           <input
             label='Username'
             className='signup'
@@ -74,6 +98,7 @@ const SignUp = props => {
             onBlur={focusOutHandler}
             onChange={handleChange}
           />
+          <p>{errors.email}</p>
           <input
             label='Email'
             className='signup'
@@ -84,6 +109,7 @@ const SignUp = props => {
             onBlur={focusOutHandler}
             onChange={handleChange}
           />
+          <p>{errors.password}</p>
           <input
             label='Password'
             className='signup'
@@ -95,55 +121,6 @@ const SignUp = props => {
             onChange={handleChange}
           />
           <br />
-          {/* <input
-                    className='userInfo'
-                    name='firstname'
-                    type='text'
-                    label='firstname'
-                    placeholder='first name'
-                    onFocus={focusHandler}
-                    onBlur={focusOutHandler}
-                    />               
-                <input
-                    className='userInfo'
-                    name='lastname'
-                    type='text'
-                    label='lastname'
-                    placeholder='last name'
-                    onFocus={focusHandler}
-                    onBlur={focusOutHandler}
-                    onChange={handleChange}
-                   />         
-                <input
-                    className='userInfo'
-                    name='age'
-                    type='text'
-                    label='age'
-                    placeholder='age'
-                    onFocus={focusHandler}
-                    onBlur={focusOutHandler}
-                    onChange={handleChange}
-                    />
-                <input
-                    className='userInfo'
-                    name='weight'
-                    type='text'
-                    label='weight'
-                    placeholder='weight'
-                    onFocus={focusHandler}
-                    onBlur={focusOutHandler}
-                    onChange={handleChange}
-                    />
-                <input
-                    className='userInfo'
-                    name='height'
-                    type='text'
-                    label='height'
-                    placeholder='height'
-                    onFocus={focusHandler}
-                    onBlur={focusOutHandler}
-                    onChange={handleChange}
-                    /> */}
           <button className='submit' onClick={handleSubmit}>Create Account</button>
         </Form>
 
