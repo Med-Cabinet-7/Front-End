@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import {useRouteMatch} from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 import Form from "../styles/forms";
 import FormWrapper from "../styles/formwrapper"
 import Header from '../styles/headers'
-
 
 const initialState = {
   username: "",
@@ -14,14 +13,14 @@ const initialState = {
 };
 
 const Login = props => {
-  const focusHandler = event =>{
-        
+  const focusHandler = event => {
+
     event.target.style.boxShadow = '5px 5px 5px grey'
   }
-  const focusOutHandler = event =>{
+  const focusOutHandler = event => {
     event.target.style.boxShadow = 'none'
   }
-  
+
   const [loginData, setLoginData] = useState(initialState);
 
   const handleChange = e => {
@@ -30,30 +29,30 @@ const Login = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setLoginData({ ...loginData, isFetching: true});
+    setLoginData({ ...loginData, isFetching: true });
     axiosWithAuth()
-    .post("/auth/login", { username: loginData.username, password: loginData.password })
-    .then(res => {
-      console.log(res)
-      localStorage.setItem("token", res.data.payload)
-      props.history.push("/userDashboard")
-    })
-    .catch(err =>{ console.log("Oof...sorry, an error occured")})
-    }
+      .post("/auth/login", { username: loginData.username, password: loginData.password })
+      .then(res => {
+        console.log(res)
+        localStorage.setItem("token", res.data.payload)
+        props.history.push("/userDashboard")
+      })
+      .catch(err => { console.log(err, "Oof...sorry, an error occured") })
+  }
 
- return (
+  return (
     <div>
       <Header>
-      <div className='header-wrapper'>
-      <h1>Open Your Medicine Cabinet</h1>
-      <img
-        className="logo"
-        src="..."
-        // ADD THE LOGO HERE
-        alt="logo image"
-      />
-      </div>  
-      <h3>Login</h3>
+        <div className='header-wrapper'>
+          <h1>Open Your Medicine Cabinet</h1>
+          <img
+            className="logo"
+            src="..."
+            // ADD THE LOGO HERE
+            alt="logo image"
+          />
+        </div>
+        <h3>Login</h3>
       </Header>
       <FormWrapper>
         <Form onSubmit={handleSubmit}>
@@ -66,10 +65,11 @@ const Login = props => {
             value={loginData.username}
             onChange={handleChange}
             onFocus={focusHandler}
-                onBlur={focusOutHandler}
+            onBlur={focusOutHandler}
           />
           <br />
           <input
+          // nz: seems like the className here should not be "login"
             className='login'
             label="Password"
             type="password"
@@ -78,7 +78,7 @@ const Login = props => {
             value={loginData.password}
             onChange={handleChange}
             onFocus={focusHandler}
-                onBlur={focusOutHandler}
+            onBlur={focusOutHandler}
           />
           <br />
           <br />
