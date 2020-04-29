@@ -11,6 +11,10 @@ const initialState = {
   password: "",
   isFetching: false
 };
+const initialErrors = {
+  username: "",
+  password: "",
+}
 
 const Login = props => {
   const focusHandler = event => {

@@ -28,13 +28,13 @@ function App() {
         </Switch>
       </Router>
       <nav>
-        <a href='#'>Home </a>
+        <a href='https://distracted-bhabha-3435c0.netlify.app/'>Home </a>
         <a href='#'>|</a>
-        <a href='#'> About</a>
+        <a href='https://distracted-bhabha-3435c0.netlify.app/about.html'> About</a>
         <a href='#'>|</a>
         <a href='#'>Contact</a>
         <a href='#'>|</a>
-        <a href='#'>Login</a>
+        <a href='https://front-end-ecru.now.sh/'>Login</a>
       </nav>
     </div>
   );
