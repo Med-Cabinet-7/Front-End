@@ -140,6 +140,13 @@ body .title-container .insideimage:hover:hover {
     opacity: 1;
   }
 }
+@media (max-width: 500px) {
+  body .title-container .insideimage {
+    font-size: 1rem;
+    line-height: 100px;
+    top: 47%;
+  }
+}
 body .title-container .overlap {
   display: flex;
   justify-content: center;
@@ -161,6 +168,19 @@ body .title-container .overlap img:hover {
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
 }
+@media (max-width: 500px) {
+  body .title-container .overlap img {
+    width: 70%;
+    margin: 85% 0;
+  }
+}
+@media (max-width: 500px) {
+  body .title-container .overlap {
+    top: 118%;
+    left: 55%;
+    flex-direction: column;
+  }
+}
 body .title-container .belowimage {
   padding-top: 15%;
   width: 100%;
@@ -172,6 +192,17 @@ body .title-container .belowimage .info {
   background-color: #008B8B;
   color: white;
   text-align: center;
+}
+@media (max-width: 500px) {
+  body .title-container .belowimage .info {
+    padding: 14% 4%;
+    text-align: center;
+  }
+}
+@media (max-width: 500px) {
+  body .title-container .belowimage {
+    flex-direction: column;
+  }
 }
 body .section-container .subsection1 {
   display: flex;
@@ -231,23 +262,61 @@ body .section-container .subsection2 .image-table img:hover {
 }
 body .section-container .abovefooter {
   background-color: #008B8B;
-  padding: 5%;
+  padding: 2%;
   color: white;
 }
 body .section-container .abovefooter p {
   color: white;
 }
+@media (max-width: 500px) {
+  body .section-container .abovefooter p {
+    padding: 4%;
+    text-align: center;
+  }
+}
 body footer {
-  background-color: grey;
+  background-color: lightgrey;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
 }
-body footer .bottomnav {
-  background-color: grey;
+body footer nav {
+  padding: 2%;
+  width: 20%;
+}
+body footer nav a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 2%;
+}
+body footer nav a:hover {
+  color: #008B8B;
+}
+@media (max-width: 500px) {
+  body footer nav {
+    display: flex;
+    justify-content: center;
+    padding: 4%;
+  }
+}
+body footer img {
+  width: 4%;
+}
+@media (max-width: 500px) {
+  body footer img {
+    width: 15%;
+  }
 }
 body footer .disclaimer {
-  background-color: grey;
+  padding: 2%;
+}
+@media (max-width: 500px) {
+  body footer .disclaimer {
+    padding: 4%;
+    text-align: center;
+  }
 }
 .nav-container {
   margin: 0 auto;
@@ -258,12 +327,22 @@ body footer .disclaimer {
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 500px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .nav-container img {
   margin-left: 4%;
 }
+@media (max-width: 500px) {
+  .nav-container img {
+    padding-left: 7%;
+  }
+}
 .nav-container .socialmedia {
   display: flex;
-  justify-content: flex-start;
 }
 .nav-container .socialmedia img {
   width: 100%;
@@ -271,10 +350,26 @@ body footer .disclaimer {
 .nav-container .socialmedia a {
   width: 4%;
 }
+@media (max-width: 500px) {
+  .nav-container .socialmedia a {
+    width: 10%;
+  }
+}
+@media (max-width: 500px) {
+  .nav-container .socialmedia {
+    justify-content: center;
+  }
+}
 .nav-container nav {
   width: 30%;
   display: flex;
   justify-content: flex-start;
+}
+@media (max-width: 500px) {
+  .nav-container nav {
+    justify-content: center;
+    padding: 4% 0;
+  }
 }
 .nav-container nav a {
   text-decoration: none;
@@ -285,4 +380,202 @@ body footer .disclaimer {
 }
 .nav-container nav a:hover {
   color: #008B8B;
+}
+.aboutcontainer .partone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/about/about1.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  padding: 5%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+.aboutcontainer .partone h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid white;
+  margin: 4%;
+  padding: 2%;
+}
+.aboutcontainer .partone p {
+  color: white;
+  font-weight: bold;
+  width: 60%;
+  padding: 4%;
+}
+.aboutcontainer .partone img {
+  width: 40%;
+  border: 4px solid white;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.aboutcontainer .partone img:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+.aboutcontainer .partone .personone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(0, 139, 136, 0.6);
+}
+.aboutcontainer .partone .persontwo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(0, 139, 136, 0.6);
+}
+.aboutcontainer .partone .personthree {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(0, 139, 136, 0.6);
+}
+.aboutcontainer .parttwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/about/about2.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  margin: 4% 0;
+  padding: 5%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+.aboutcontainer .parttwo h3 {
+  color: #323232;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #323232;
+  margin: 4%;
+  padding: 2%;
+}
+.aboutcontainer .parttwo p {
+  color: #323232;
+  font-weight: bold;
+  width: 60%;
+  padding: 4%;
+}
+.aboutcontainer .parttwo img {
+  width: 40%;
+  border: 4px solid #323232;
+  border-radius: 50%;
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.aboutcontainer .parttwo img:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+.aboutcontainer .parttwo .personfour {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(211, 211, 211, 0.6);
+}
+.aboutcontainer .parttwo .personfive {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(211, 211, 211, 0.6);
+}
+.aboutcontainer .parttwo .personsix {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(211, 211, 211, 0.6);
+}
+.aboutcontainer .partthree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/about/about3.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  margin: 4% 0;
+  padding: 5%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+.aboutcontainer .partthree h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid white;
+  margin: 4%;
+  padding: 2%;
+}
+.aboutcontainer .partthree p {
+  color: white;
+  font-weight: bold;
+  width: 60%;
+  padding: 4%;
+}
+.aboutcontainer .partthree img {
+  width: 40%;
+  border: 4px solid white;
+  border-radius: 50%;
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.aboutcontainer .partthree img:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+.aboutcontainer .partthree .personseven {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(0, 139, 136, 0.6);
+}
+.aboutcontainer .partthree .personeight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(0, 139, 136, 0.6);
+}
+.aboutcontainer .partthree .personnine {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 575px;
+  background: rgba(0, 139, 136, 0.6);
 }
