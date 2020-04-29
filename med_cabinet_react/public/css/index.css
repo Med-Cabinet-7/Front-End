@@ -111,16 +111,17 @@ body .title-container .insideimage {
   top: 45%;
   left: 20%;
   transform: translate(-50%, -50%);
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: bold;
   text-decoration: none;
   border: 4px solid white;
   border-radius: 50%;
   line-height: 200px;
   padding: 2%;
+  background: rgba(0, 139, 136, 0.6);
 }
 body .title-container .insideimage .centered {
-  color: #008B8B;
+  color: white;
 }
 body .title-container .insideimage:hover:hover {
   opacity: 1;
@@ -369,6 +370,7 @@ body footer .disclaimer {
   .nav-container nav {
     justify-content: center;
     padding: 4% 0;
+    width: 90%;
   }
 }
 .nav-container nav a {
@@ -380,6 +382,11 @@ body footer .disclaimer {
 }
 .nav-container nav a:hover {
   color: #008B8B;
+}
+@media (max-width: 500px) {
+  .nav-container nav a {
+    margin: 1.5%;
+  }
 }
 .aboutcontainer .partone {
   display: flex;
