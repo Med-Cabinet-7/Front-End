@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 import { useRouteMatch } from 'react-router-dom'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Axios from "axios";
