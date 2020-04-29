@@ -362,6 +362,7 @@ body footer .disclaimer {
 .nav-container nav {
   display: flex;
   justify-content: flex-start;
+  width: 20%;
 }
 @media (max-width: 500px) {
   .nav-container nav {
