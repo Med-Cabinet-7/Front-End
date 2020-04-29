@@ -371,6 +371,7 @@ body footer .disclaimer {
   }
 }
 .nav-container nav a {
+  display: inline-block;
   text-decoration: none;
   font-size: 1.5rem;
   margin: 2%;
