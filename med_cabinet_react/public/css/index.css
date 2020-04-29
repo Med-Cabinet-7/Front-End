@@ -322,9 +322,8 @@ body footer .disclaimer {
   margin: 0 auto;
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 @media (max-width: 500px) {
@@ -361,7 +360,6 @@ body footer .disclaimer {
   }
 }
 .nav-container nav {
-  width: 30%;
   display: flex;
   justify-content: flex-start;
 }
