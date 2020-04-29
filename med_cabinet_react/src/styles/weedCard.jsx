@@ -10,6 +10,12 @@ border-radius: 25px;
 box-shadow: 5px 5px 5px grey;
 padding: 1%;
 margin: 3%;
-width: 80%;
+width: 50%;
+.descWrapper{
+    width: 65%;
+    display: inline-block;
+    text-align: left;
+    border-top: 2px solid grey;
+}
 `
 export default WeedCardStyle
