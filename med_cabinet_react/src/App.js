@@ -17,16 +17,16 @@ function App() {
           <PrivateRoute
             exact
             path={ROUTE_NAMES.userDash}
-            component={<UserInfo />}
+            component={ UserInfo }
           />
           {/* <Route path='/foo'>
             <UserInfo />
           </Route> */}
-          <Route path={ROUTE_NAMES.signup}>
-            <SignUp />
+          <Route path={ROUTE_NAMES.signup} component = { SignUp }>
+
           </Route>
-          <Route path={ROUTE_NAMES.login}>
-            <Login />
+          <Route path={ROUTE_NAMES.login} component = { Login }>
+            {/* <Login /> */}
           </Route>
         </Switch>
       </Router>

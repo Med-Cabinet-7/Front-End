@@ -5,6 +5,7 @@ import { useRouteMatch } from "react-router-dom";
 import Form from '../styles/forms'
 import FormWrapper from '../styles/formwrapper'
 import Header from '../styles/headers'
+import Par from '../styles/yupstyle'
 import * as yup from 'yup'
 import { ROUTE_NAMES } from '../utils/route_consts';
 
@@ -17,21 +18,16 @@ const SignUp = props => {
       password: yup.string()
         .min(8, 'Your password must be at least 8 characters')
         .required('You must create a password'),
-      email: yup.string()
-      .email('Your email must be valid')
-      .required('You must provide an email')
     })
 
   const [signUpInfo, setSignUpInfo] = useState({
-    email: "",
     username: "",
     password: "",
-    id: ''
+    // id: ''
   });
   const initialErrors = {
     username: "",
     password: "",
-    email: ""
   }
 
   const [errors, setErrors] = useState(initialErrors)
@@ -39,6 +35,7 @@ const SignUp = props => {
   const handleChange = event => {
     const name=event.target.name
     const value = event.target.value
+
 
 
     yup.reach(signupSchema, name)
@@ -52,16 +49,23 @@ const SignUp = props => {
 
       setSignUpInfo({ ...signUpInfo, [name]: value });
   };
-
+// .post("/:id/myinfo", signUpInfo)
+      // .post("auth/register", {username:signUpInfo.username, password:signUpInfo.password})
   const handleSubmit = event => {
     event.preventDefault();
     setSignUpInfo({ ...signUpInfo });
+    console.log(signUpInfo)
     axiosWithAuth()
       .post("auth/register", signUpInfo)
+
       .then(res => {
-        setSignUpInfo({...signUpInfo, [signUpInfo.id]: res.savedUser.id})
-        props.history.push(ROUTE_NAMES.login)
+        console.log("in Axios", res);
+        console.log(props);
+        // setSignUpInfo({...signUpInfo, [signUpInfo.id]: res.savedUser.id})
+        props.history.push("/");
+        // props.history.push(ROUTE_NAMES.login)
       })
+
       .catch(err =>
         console.log(err, "sorry, an error has occured while signing you up")
       );
@@ -91,7 +95,7 @@ const SignUp = props => {
       </Header>
       <FormWrapper className='signup-wrapper'>
         <Form className='signup-form'>
-          <p>{errors.username}</p>
+          <Par>{errors.username}</Par>
           <input
             label='Username'
             className='signup'
@@ -103,19 +107,7 @@ const SignUp = props => {
             onChange={handleChange}
             value={signUpInfo.username}
           />
-          <p>{errors.email}</p>
-          <input
-            label='Email'
-            className='signup'
-            type='text'
-            placeholder='Email'
-            name='email'
-            onFocus={focusHandler}
-            onBlur={focusOutHandler}
-            onChange={handleChange}
-            value={signUpInfo.email}
-          />
-          <p>{errors.password}</p>
+          <Par>{errors.password}</Par>
           <input
             label='Password'
             className='signup'

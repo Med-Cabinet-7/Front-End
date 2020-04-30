@@ -1,16 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import { getStrains } from "../utils/getStrains";
+import { axiosWithAuth } from "../utils/axiosWithAuth"
 import Axios from "axios";
 import Form from '../styles/forms'
 import FormWrapper from '../styles/formwrapper'
 import Header from '../styles/headers'
 import WeedCard from "./recCard"
+import SavedStrains from "./saves"
 
 function UserInfo({ props }) {
     const [userInfo, setUserInfo] = useState({
         hightype: '',
     })
+    const [saves, setSaves] = useState([])
+
+    useEffect(()=>{
+      axiosWithAuth().get("/weed/6")
+      .then(res=>{
+          console.log(res)
+          setSaves([...saves, res.data])
+      })
+      .catch(err=>{
+          console.log('There was an error with your favorites list')
+      })
+    },[])
 
     const [strains, setStrains] = useState([]);
 
@@ -58,6 +72,8 @@ function UserInfo({ props }) {
             />
 
             <button onClick={onHighTypeSubmit}>Get Strains</button>
+            <h3>Here's your favorites!</h3>
+            <SavedStrains saves={saves}/>
 
             <h3>Here are your reccomendations!</h3>
             {/* <WeedCards strains={strains} /> */}
