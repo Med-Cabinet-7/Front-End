@@ -4,11 +4,9 @@ import './components/signup';
 import SignUp from './components/signup';
 import Login from './components/login';
 import UserInfo from './components/userDashboard';
-import WeedCard from './components/recCard'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import PrivateRoute from "./components/PrivateRoute";
-
-const url = 'http://localhost:3000/'
+import { ROUTE_NAMES } from './utils/route_consts';
 
 
 function App() {
@@ -16,25 +14,30 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <PrivateRoute exact path='/dashboard'>
+          <PrivateRoute
+            exact
+            path={ROUTE_NAMES.userDash}
+            component={<UserInfo />}
+          />
+          {/* <Route path='/foo'>
             <UserInfo />
-          </PrivateRoute>
-          <Route path='/signup'>
+          </Route> */}
+          <Route path={ROUTE_NAMES.signup}>
             <SignUp />
           </Route>
-          <Route path='/'>
+          <Route path={ROUTE_NAMES.login}>
             <Login />
           </Route>
         </Switch>
       </Router>
       <nav>
-        <a href='https://distracted-bhabha-3435c0.netlify.app/'>Home </a>
+        <a href={ROUTE_NAMES.home}>Home </a>
         <a href='#'>|</a>
-        <a href='https://distracted-bhabha-3435c0.netlify.app/about.html'> About</a>
+        <a href={ROUTE_NAMES.about}> About</a>
         <a href='#'>|</a>
         <a href='#'>Contact</a>
         <a href='#'>|</a>
-        <a href='https://front-end-ecru.now.sh/'>Login</a>
+        <a href={ROUTE_NAMES.login}>Login</a>
       </nav>
     </div>
   );

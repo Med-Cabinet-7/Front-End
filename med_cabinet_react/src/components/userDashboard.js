@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useRouteMatch } from 'react-router-dom'
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { getStrains } from "../utils/getStrains";
 import Axios from "axios";
 import Form from '../styles/forms'
 import FormWrapper from '../styles/formwrapper'
@@ -24,18 +24,11 @@ function UserInfo({ props }) {
     }
 
     const handleUserInfoChange = event => setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
-    const onHighTypeSubmit = event => {
+    const onHighTypeSubmit = async event => {
         event.preventDefault();
-        axiosWithAuth()
-            .post('/hightype', userInfo)
-            .then(res => {
-                console.log('High type response', res);
-            })
-            .catch(err => {
-                console.error('High type error', err);
-            })
+        const returnedStrains = await getStrains(userInfo.hightype);
+        setStrains(returnedStrains);
     }
-
 
     //https://cannapi.herokuapp.com/predict  (in the .get)
     //id of input field user_input ... (Need to be sent to the backend as an array) the top 5 strains will be return ... maybe use an .await

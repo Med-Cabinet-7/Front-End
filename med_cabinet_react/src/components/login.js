@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { getLoginToken } from "../utils/login";
 import { useRouteMatch } from "react-router-dom";
 import Form from "../styles/forms";
 import FormWrapper from "../styles/formwrapper"
 import Header from '../styles/headers'
+import { ROUTE_NAMES } from '../utils/route_consts';
 
 const initialState = {
   username: "",
@@ -31,18 +32,18 @@ const Login = props => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoginData({ ...loginData, isFetching: true });
-    axiosWithAuth()
-      .post("/auth/login", { username: loginData.username, password: loginData.password })
-      .then(res => {
-        console.log(res)
-        localStorage.setItem("token", res.data.payload)
-        props.history.push("/userDashboard")
-      })
-      //check to see if it needs to be userDashboard or just dashboard
-      .catch(err => { console.log(err, "Oof...sorry, an error occured") })
+
+    try {
+      const token = await getLoginToken(loginData.username, loginData.password);
+      localStorage.setItem('token', token);
+      setLoginData({ ...loginData, isFetching: false });
+      props.history.push(ROUTE_NAMES.userDash);
+    } catch (err) {
+      console.log(err, "Oof...sorry, an error occured");
+    }
   }
 
   return (
@@ -90,7 +91,7 @@ const Login = props => {
           <button>Log In</button>
           {loginData.isFetching && "Please wait...logging you in"}
         </Form>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
+        Don't have an account? <Link to={ROUTE_NAMES.signup}>Sign Up</Link>
       </FormWrapper>
 
     </div>

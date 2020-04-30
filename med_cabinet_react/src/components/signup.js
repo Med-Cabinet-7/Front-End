@@ -6,9 +6,10 @@ import Form from '../styles/forms'
 import FormWrapper from '../styles/formwrapper'
 import Header from '../styles/headers'
 import * as yup from 'yup'
+import { ROUTE_NAMES } from '../utils/route_consts';
 
 const SignUp = props => {
-  const signupSchema = 
+  const signupSchema =
     yup.object().shape({
       username: yup.string()
         .min(4, 'Your username must be more than 3 characters')
@@ -32,13 +33,13 @@ const SignUp = props => {
     password: "",
     email: ""
   }
-  
+
   const [errors, setErrors] = useState(initialErrors)
 
   const handleChange = event => {
     const name=event.target.name
     const value = event.target.value
-   
+
 
     yup.reach(signupSchema, name)
     .validate(value)
@@ -59,12 +60,7 @@ const SignUp = props => {
       .post("auth/register", signUpInfo)
       .then(res => {
         setSignUpInfo({...signUpInfo, [signUpInfo.id]: res.savedUser.id})
-        // nz: it would be cool if the act of signing up automatically logged them in.
-        // then this could just push them to the user dashboard instead of the login page.
-        // That's riding on the idea though that the sign up API route returns the token in its payload.
-        // localStorage.setItem("token", res.data.payload)
-        // props.history.push("/userDashboard")
-        props.history.push("/dashboard")
+        props.history.push(ROUTE_NAMES.login)
       })
       .catch(err =>
         console.log(err, "sorry, an error has occured while signing you up")
@@ -135,7 +131,7 @@ const SignUp = props => {
           <button className='submit' onClick={handleSubmit}>Create Account</button>
         </Form>
 
-            Already have an account? <Link to="/">Log In</Link>
+            Already have an account? <Link to={ROUTE_NAMES.login}>Log In</Link>
       </FormWrapper>
     </div>
   )
