@@ -1,9 +1,5 @@
 body {
     max-width: 100%;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // align-content: center;
 
     .title-container {
         display: flex;
@@ -11,16 +7,7 @@ body {
         align-items:center;
 
         img {
-            // object-fit: cover;
-            // width: 98%;
-            // border: 1px solid black;
-            // display: block;
-            // margin-left: auto;
-            // margin-right: auto;
-            // width: 50%;
-            width: 100%;
-            // border: 1px solid black;
-            
+            width: 100%;    
         }
 
         .insideimage {
@@ -43,7 +30,6 @@ body {
 
             &:hover {
                 &:hover {
-                    // opacity: .5;
                     opacity: 1;
                     -webkit-animation: flash 1.5s;
                     animation: flash 1.5s;
@@ -67,11 +53,20 @@ body {
                 }
             }
 
+            @media(max-width: 800px) {
+                top: 60%;
+                font-size: 1rem;
+                border-radius: 50%;
+                line-height: 120px;
+            }
+            
             @media(max-width: 500px) {
                 font-size: 1rem;
-                line-height: 100px;
+                line-height: 115px;
                 top: 47%;
             }
+
+            
 
         }
 
@@ -104,11 +99,17 @@ body {
 
             }
 
+            @media(max-width: 800px) {
+                top: 82%;
+            }
+
             @media(max-width: 500px) {
                 top: 118%;
                 left: 55%;
                 flex-direction: column;
             }
+
+            
         }
 
         .belowimage {
@@ -123,15 +124,23 @@ body {
                 color: white;
                 text-align: center;
 
+                @media(max-width: 800px) {
+                    padding: 4%;
+                }
+                
                 @media(max-width: 500px) {
                     padding: 14% 4%;
                     text-align: center;
                 }
             }
 
-            @media(max-width: 500px) {
+            @media(max-width: 800px) {
                 flex-direction: column;
             }
+            
+            @media(max-width: 500px) {
+                flex-direction: column;
+            }  
         }
     }
     .section-container {
@@ -173,12 +182,8 @@ body {
                     border: 4px solid #008B8B;
                     width: 25%;
                     margin: 2% 0;
-                    // opacity: 1;
-                    // -webkit-transition: .3s ease-in-out;
-                    // transition: .3s ease-in-out;
 
                     &:hover {
-                        // opacity: .5;
                         opacity: 1;
 	                    -webkit-animation: flash 1.5s;
 	                    animation: flash 1.5s;
@@ -212,62 +217,16 @@ body {
             p {
                 color: white;
 
+                @media(max-width: 800px) {
+                    padding: 4%;
+                }
+                
                 @media(max-width: 500px) {
                     padding: 4%;
                     text-align: center;
                 }
             }
         }
-    }
-    
-    footer {
-        background-color: lightgrey;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-
-        nav {
-            padding: 2%;
-            width: 20%;
-
-            a {
-                text-decoration: none;
-                font-size: 1.2rem;
-                padding: 2%;
-
-                &:hover {
-                    color: #008B8B;
-                }
-            }
-
-            @media(max-width: 500px) {
-                display: flex;
-                justify-content: center;
-                padding: 4%;
-            }
-            
-        }
-
-        img {
-            width: 4%;
-
-            @media(max-width: 500px) {
-                width: 15%;
-            }
-        }
-
-        .disclaimer {
-            padding: 2%;
-
-            @media(max-width: 500px) {
-                padding: 4%;
-                text-align: center;
-            }
-        }
-
-    }
-
+    }    
 }
 

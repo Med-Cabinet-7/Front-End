@@ -1,0 +1,69 @@
+.greenh3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid white;
+    margin: 4%;
+    padding: 2%;
+
+    @media(max-width: 500px) {
+        text-align: center;
+    }
+
+    @media(max-width: 800px) {
+        text-align: center;
+    }
+}
+
+.greenpara {
+    color: white;
+    font-weight: bold;
+    width: 60%;
+    padding: 4%;
+
+    @media(max-width: 500px) {
+        width: 80%;
+    }
+}
+
+.greenimage {
+    width: 40%;
+    border: 4px solid white;
+    border-radius: 50%;
+    -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+            
+    &:hover {
+        -webkit-transform: scale(1.3);
+	    transform: scale(1.3);
+    }
+}
+
+.persongreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 575px;
+    background: rgba(0, 139, 136, 0.6);
+}
+
+.personwhite {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 575px;
+    background: rgba(211, 211, 211, 0.6);
+}
+
+.personmedia500 {
+    width: 95%;
+    height: 500px;
+    margin-bottom: 4%;
+}
