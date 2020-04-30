@@ -61,12 +61,12 @@ function UserInfo({ props }) {
             <Header>
                 <div className='header-wrapper'>
                     <h1>Open Your Medicine Cabinet</h1>
-                    <img
+                    {/* <img
                         className="logo"
-                        src="..."
+                        src="med_cabinet_react/src/img/android-chrome-192x192.png"
                         // ADD THE LOGO HERE
                         alt="logo image"
-                    />
+                    /> */}
                 </div>
             </Header>
             <input
