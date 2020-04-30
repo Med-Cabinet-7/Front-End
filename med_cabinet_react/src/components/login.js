@@ -13,7 +13,7 @@ const initialState = {
 };
 const initialErrors = {
   username: "",
-  password: "",
+  password: ""
 }
 
 const Login = props => {
@@ -41,6 +41,7 @@ const Login = props => {
         localStorage.setItem("token", res.data.payload)
         props.history.push("/userDashboard")
       })
+      //check to see if it needs to be userDashboard or just dashboard
       .catch(err => { console.log(err, "Oof...sorry, an error occured") })
   }
 

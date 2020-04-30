@@ -25,6 +25,7 @@ const SignUp = props => {
     email: "",
     username: "",
     password: "",
+    id: ''
   });
   const initialErrors = {
     username: "",
@@ -57,6 +58,7 @@ const SignUp = props => {
     axiosWithAuth()
       .post("auth/register", signUpInfo)
       .then(res => {
+        setSignUpInfo({...signUpInfo, [signUpInfo.id]: res.savedUser.id})
         // nz: it would be cool if the act of signing up automatically logged them in.
         // then this could just push them to the user dashboard instead of the login page.
         // That's riding on the idea though that the sign up API route returns the token in its payload.

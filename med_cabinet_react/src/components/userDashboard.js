@@ -36,6 +36,10 @@ function UserInfo({ props }) {
             })
     }
 
+
+    //https://cannapi.herokuapp.com/predict  (in the .get)
+    //id of input field user_input ... (Need to be sent to the backend as an array) the top 5 strains will be return ... maybe use an .await
+
     return (
         <div>
             <Header>
@@ -65,7 +69,8 @@ function UserInfo({ props }) {
             <h3>Here are your reccomendations!</h3>
             {/* <WeedCards strains={strains} /> */}
             <ul>
-                {strains.slice(0, 5).map((strain) => {
+                {/* dont need the  --   .slice(0, 5) */}
+                {strains.map((strain) => {
                     return <li><WeedCard strain={strain} /></li>;
                 })}
             </ul>
