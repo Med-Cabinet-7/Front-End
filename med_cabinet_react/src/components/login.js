@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getLoginToken } from "../utils/login";
 import { useRouteMatch } from "react-router-dom";
@@ -6,6 +6,8 @@ import Form from "../styles/forms";
 import FormWrapper from "../styles/formwrapper"
 import Header from '../styles/headers'
 import { ROUTE_NAMES } from '../utils/route_consts';
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+import SavedStrains from './saves'
 
 const initialState = {
   username: "",
@@ -17,7 +19,11 @@ const initialErrors = {
   password: ""
 }
 
+
 const Login = props => {
+
+
+
   const focusHandler = event => {
 
     event.target.style.boxShadow = '5px 5px 5px grey'
@@ -60,10 +66,10 @@ const Login = props => {
         </div>
         <h3>Login</h3>
       </Header>
+      {/* <SavedStrains saves={saves} /> */}
       <FormWrapper>
         <Form onSubmit={handleSubmit}>
           <input
-            className='login'
             label="Username"
             type="text"
             name="username"
@@ -75,8 +81,6 @@ const Login = props => {
           />
           <br />
           <input
-          // nz: seems like the className here should not be "login"
-            className='login'
             label="Password"
             type="password"
             name="password"
