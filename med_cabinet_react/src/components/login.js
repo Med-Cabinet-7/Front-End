@@ -8,6 +8,8 @@ import Header from '../styles/headers'
 import { ROUTE_NAMES } from '../utils/route_consts';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import SavedStrains from './saves'
+import * as yup from 'yup'
+import Par from '../styles/yupstyle'
 
 const initialState = {
   username: "",
@@ -22,7 +24,14 @@ const initialErrors = {
 
 const Login = props => {
 
+  const loginSchema = yup.object().shape({
+    username: yup.string()
+    .required('You must input yout username correctly'),
+    password: yup.string()
+    .required('You must input your password correctly')
+  })
 
+  const [errors, setErrors] = useState(initialErrors)
 
   const focusHandler = event => {
 
@@ -35,7 +44,20 @@ const Login = props => {
   const [loginData, setLoginData] = useState(initialState);
 
   const handleChange = e => {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+
+    const value= e.target.value
+    const name = e.target.name
+
+    yup.reach(loginSchema, name)
+    .validate(value)
+    .then(valid=>{
+        setErrors({...errors, [name]:''})
+      })
+    .catch(err=>{
+        setErrors({...errors, [name]: err.errors[0]})
+      })
+
+      setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async e => {
@@ -57,18 +79,17 @@ const Login = props => {
       <Header>
         <div className='header-wrapper'>
           <h1>Open Your Medicine Cabinet</h1>
-          {/* <img
+          <img
             className="logo"
-            src="med_cabinet_react/src/img/android-chrome-192x192.png"
-            // ADD THE LOGO HERE
+            src="../img/android-chrome-192x192.png"
             alt="logo image"
-          /> */}
+          />
         </div>
         <h3>Login</h3>
       </Header>
-      {/* <SavedStrains saves={saves} /> */}
       <FormWrapper>
         <Form onSubmit={handleSubmit}>
+          <Par>{errors.username}</Par>
           <input
             label="Username"
             type="text"
@@ -80,6 +101,7 @@ const Login = props => {
             onBlur={focusOutHandler}
           />
           <br />
+          <Par>{errors.password}</Par>
           <input
             label="Password"
             type="password"
