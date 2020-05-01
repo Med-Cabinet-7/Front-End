@@ -84,12 +84,12 @@ const SignUp = props => {
       <Header>
         <div className='header-wrapper'>
           <h1>Open Your Medicine Cabinet</h1>
-          <img
+          {/* <img
             className="logo"
             src="../img/android-chrome-192x192.png"
             // ADD THE LOGO HERE
             alt="logo image"
-          />
+          /> */}
         </div>
         <h3>Sign Up!</h3>
       </Header>
