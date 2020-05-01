@@ -222,14 +222,14 @@ body .title-container .insideimage:hover:hover {
   body .title-container .insideimage {
     font-size: 1rem;
     line-height: 115px;
-    top: 47%;
+    top: 45%;
   }
 }
 body .title-container .overlap {
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 110%;
+  top: 105%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -249,7 +249,7 @@ body .title-container .overlap img:hover {
 @media (max-width: 500px) {
   body .title-container .overlap img {
     width: 70%;
-    margin: 85% 0;
+    margin: 99% 0;
   }
 }
 @media (max-width: 800px) {
@@ -259,7 +259,7 @@ body .title-container .overlap img:hover {
 }
 @media (max-width: 500px) {
   body .title-container .overlap {
-    top: 118%;
+    top: 120%;
     left: 55%;
     flex-direction: column;
   }
